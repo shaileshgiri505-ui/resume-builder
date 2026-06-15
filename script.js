@@ -1,104 +1,136 @@
-// EasyEdit Script
+// EasyEdit Professional Script
 
 document.addEventListener("DOMContentLoaded", () => {
 
     console.log("EasyEdit Loaded");
 
+    loadTheme();
+
 });
 
-// Mobile Menu
-
-function toggleMenu(){
-
-    const menu =
-    document.querySelector(".nav-links");
-
-    menu.classList.toggle("active");
-
-}
-
-// Dark Mode
+// ====================
+// DARK MODE
+// ====================
 
 function toggleTheme(){
 
     document.body.classList.toggle("light-mode");
 
-    const current =
-    localStorage.getItem("theme");
+    if(document.body.classList.contains("light-mode")){
 
-    if(current === "light"){
-
-        localStorage.setItem("theme","dark");
+        localStorage.setItem(
+            "theme",
+            "light"
+        );
 
     }else{
 
-        localStorage.setItem("theme","light");
+        localStorage.setItem(
+            "theme",
+            "dark"
+        );
 
     }
 
 }
 
-// Load Theme
-
-window.onload = () => {
+function loadTheme(){
 
     const theme =
     localStorage.getItem("theme");
 
     if(theme === "light"){
 
-        document.body.classList.add("light-mode");
+        document.body.classList.add(
+            "light-mode"
+        );
 
     }
 
-};
+}
 
-// Smooth Scroll
+// ====================
+// MOBILE MENU
+// ====================
+
+function toggleMenu(){
+
+    const menu =
+    document.querySelector(
+        ".nav-links"
+    );
+
+    menu.classList.toggle(
+        "show-menu"
+    );
+
+}
+
+// ====================
+// SMOOTH SCROLL
+// ====================
 
 document
 .querySelectorAll('a[href^="#"]')
 .forEach(anchor => {
 
-    anchor.addEventListener("click", function(e){
+    anchor.addEventListener(
+        "click",
+        function(e){
 
-        e.preventDefault();
+            e.preventDefault();
 
-        document
-        .querySelector(
-            this.getAttribute("href")
-        )
-        ?.scrollIntoView({
-            behavior:"smooth"
-        });
+            document
+            .querySelector(
+                this.getAttribute("href")
+            )
+            ?.scrollIntoView({
 
-    });
+                behavior:"smooth"
+
+            });
+
+        }
+
+    );
 
 });
 
-// Tool Search
+// ====================
+// TOOL SEARCH
+// ====================
 
 function searchTools(){
 
     let input =
-    document.getElementById("toolSearch")
-    .value
-    .toLowerCase();
+    document.getElementById(
+        "toolSearch"
+    );
+
+    if(!input) return;
+
+    let filter =
+    input.value.toLowerCase();
 
     let cards =
-    document.querySelectorAll(".tool-card");
+    document.querySelectorAll(
+        ".tool-card"
+    );
 
     cards.forEach(card => {
 
         let text =
         card.innerText.toLowerCase();
 
-        if(text.includes(input)){
+        if(text.includes(filter)){
 
-            card.style.display = "block";
+            card.style.display =
+            "block";
 
         }else{
 
-            card.style.display = "none";
+            card.style.display =
+            "none";
 
         }
 
@@ -106,20 +138,48 @@ function searchTools(){
 
 }
 
-// Notification
+// ====================
+// NOTIFICATION
+// ====================
 
 function showNotification(message){
 
     let note =
     document.createElement("div");
 
-    note.className =
-    "notification";
-
     note.innerText =
     message;
 
-    document.body.appendChild(note);
+    note.className =
+    "notification";
+
+    note.style.position =
+    "fixed";
+
+    note.style.bottom =
+    "20px";
+
+    note.style.right =
+    "20px";
+
+    note.style.padding =
+    "12px";
+
+    note.style.borderRadius =
+    "10px";
+
+    note.style.background =
+    "#2563eb";
+
+    note.style.color =
+    "#fff";
+
+    note.style.zIndex =
+    "9999";
+
+    document.body.appendChild(
+        note
+    );
 
     setTimeout(() => {
 
@@ -129,71 +189,72 @@ function showNotification(message){
 
 }
 
-// Tool Open Demo
-
-function openTool(toolName){
-
-    showNotification(
-        toolName + " Coming Soon"
-    );
-
-}
-
-// Button Effects
+// ====================
+// BUTTON EFFECT
+// ====================
 
 document
 .querySelectorAll("button")
 .forEach(btn => {
 
-    btn.addEventListener("click", () => {
-
-        btn.style.transform =
-        "scale(0.95)";
-
-        setTimeout(() => {
+    btn.addEventListener(
+        "click",
+        () => {
 
             btn.style.transform =
-            "scale(1)";
+            "scale(0.95)";
 
-        },150);
+            setTimeout(() => {
 
-    });
+                btn.style.transform =
+                "scale(1)";
+
+            },150);
+
+        }
+
+    );
 
 });
 
-// Counter Animation
+// ====================
+// CARD ANIMATION
+// ====================
 
-function animateCounters(){
+document
+.querySelectorAll(".tool-card")
+.forEach(card => {
 
-    const counters =
-    document.querySelectorAll(".stat-box h3");
+    card.addEventListener(
+        "mouseenter",
+        () => {
 
-    counters.forEach(counter => {
+            card.style.transform =
+            "translateY(-8px)";
 
-        let count = 0;
+        }
+    );
 
-        const target =
-        parseInt(counter.innerText);
+    card.addEventListener(
+        "mouseleave",
+        () => {
 
-        const update = () => {
+            card.style.transform =
+            "translateY(0px)";
 
-            if(count < target){
+        }
+    );
 
-                count++;
+});
 
-                counter.innerText =
-                count + "+";
+// ====================
+// COMING SOON
+// ====================
 
-                requestAnimationFrame(update);
+function comingSoon(tool){
 
-            }
-
-        };
-
-        update();
-
-    });
+    showNotification(
+        tool + " Coming Soon"
+    );
 
 }
-
-animateCounters();

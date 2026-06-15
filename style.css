@@ -7,7 +7,7 @@
 body{
     font-family:Arial,sans-serif;
     background:#0f172a;
-    color:white;
+    color:#ffffff;
     line-height:1.6;
 }
 
@@ -31,12 +31,13 @@ body{
 .nav-links{
     display:flex;
     list-style:none;
-    gap:25px;
+    gap:20px;
+    flex-wrap:wrap;
 }
 
 .nav-links a{
-    color:white;
     text-decoration:none;
+    color:white;
     transition:0.3s;
 }
 
@@ -51,11 +52,6 @@ body{
     align-items:center;
     text-align:center;
     padding:40px;
-    background:linear-gradient(
-        135deg,
-        #0f172a,
-        #1e293b
-    );
 }
 
 .hero-content{
@@ -63,14 +59,14 @@ body{
 }
 
 .hero h1{
-    font-size:55px;
+    font-size:60px;
     margin-bottom:20px;
 }
 
 .hero p{
     font-size:20px;
     color:#cbd5e1;
-    margin-bottom:30px;
+    margin-bottom:25px;
 }
 
 .hero-buttons{
@@ -84,107 +80,127 @@ body{
     background:#2563eb;
     color:white;
     border:none;
-    padding:14px 28px;
+    padding:14px 30px;
     border-radius:10px;
     cursor:pointer;
-    font-size:16px;
 }
 
 .secondary-btn{
     background:transparent;
-    color:white;
     border:2px solid #2563eb;
-    padding:14px 28px;
+    color:white;
+    padding:14px 30px;
     border-radius:10px;
     cursor:pointer;
-    font-size:16px;
 }
 
-.tools-section{
+.tools-section,
+.features{
     padding:80px 8%;
 }
 
-.tools-section h2{
+.tools-section h2,
+.features h2{
     text-align:center;
     margin-bottom:40px;
-    font-size:40px;
 }
 
-.tools-grid{
+.tools-grid,
+.feature-grid{
     display:grid;
     grid-template-columns:
     repeat(auto-fit,minmax(250px,1fr));
     gap:25px;
 }
 
-.tool-card{
-    background:#1e293b;
-    padding:30px;
-    border-radius:16px;
-    text-align:center;
-    transition:0.3s;
-}
-
-.tool-card:hover{
-    transform:translateY(-8px);
-}
-
-.tool-card i{
-    font-size:40px;
-    margin-bottom:15px;
-    color:#38bdf8;
-}
-
-.features{
-    padding:80px 8%;
-}
-
-.features h2{
-    text-align:center;
-    margin-bottom:40px;
-    font-size:40px;
-}
-
-.feature-grid{
-    display:grid;
-    grid-template-columns:
-    repeat(auto-fit,minmax(220px,1fr));
-    gap:20px;
-}
-
+.tool-card,
 .feature-card{
     background:#1e293b;
     padding:25px;
-    border-radius:15px;
+    border-radius:16px;
+    box-shadow:0 0 15px rgba(0,0,0,0.2);
+}
+
+.tool-card:hover{
+    transform:translateY(-5px);
+    transition:0.3s;
+}
+
+.page-header{
     text-align:center;
-    font-weight:bold;
+    padding:60px 20px;
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+    padding:20px;
+}
+
+.resume-form{
+    background:#1e293b;
+    padding:20px;
+    border-radius:15px;
+    margin-bottom:20px;
+}
+
+.resume-preview{
+    background:#ffffff;
+    color:#000000;
+    padding:20px;
+    border-radius:15px;
+}
+
+input,
+textarea,
+select{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border:none;
+    border-radius:10px;
+}
+
+button{
+    padding:12px 20px;
+    border:none;
+    border-radius:10px;
+    background:#2563eb;
+    color:white;
+    cursor:pointer;
+    margin-top:10px;
+}
+
+button:hover{
+    background:#1d4ed8;
 }
 
 .stats{
-    padding:60px 8%;
     display:flex;
     justify-content:center;
-    gap:40px;
+    gap:25px;
     flex-wrap:wrap;
+    padding:50px 20px;
 }
 
 .stat-box{
     background:#1e293b;
-    padding:30px;
+    padding:25px;
     border-radius:15px;
-    min-width:180px;
     text-align:center;
+    min-width:180px;
 }
 
 .stat-box h3{
-    font-size:40px;
+    font-size:35px;
     color:#38bdf8;
 }
 
 footer{
     background:#111827;
     text-align:center;
-    padding:40px;
+    padding:30px;
     margin-top:50px;
 }
 
@@ -192,24 +208,31 @@ footer h2{
     margin-bottom:10px;
 }
 
+img{
+    max-width:100%;
+}
+
 @media(max-width:768px){
 
-.navbar{
-    flex-direction:column;
-    gap:15px;
-}
+    .navbar{
+        flex-direction:column;
+        gap:15px;
+    }
 
-.nav-links{
-    flex-wrap:wrap;
-    justify-content:center;
-}
+    .nav-links{
+        justify-content:center;
+    }
 
-.hero h1{
-    font-size:36px;
-}
+    .hero h1{
+        font-size:36px;
+    }
 
-.hero p{
-    font-size:18px;
-}
+    .hero p{
+        font-size:16px;
+    }
+
+    .container{
+        width:95%;
+    }
 
 }

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>QR Tools - EasyEdit</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+</head>
+
+<body>
+
+<nav class="navbar">
+
+<div class="logo">
+EasyEdit
+</div>
+
+<ul class="nav-links">
+
+<li><a href="index.html">Home</a></li>
+
+<li><a href="resume-builder.html">Resume Builder</a></li>
+
+<li><a href="pdf-tools.html">PDF Tools</a></li>
+
+<li><a href="image-tools.html">Image Tools</a></li>
+
+<li><a href="qr-tools.html">QR Tools</a></li>
+
+<li><a href="invoice.html">Invoice</a></li>
+
+</ul>
+
+</nav>
+
+<section class="page-header">
+
+<h1>QR Code Generator</h1>
+
+<p>
+Generate QR Codes Instantly
+</p>
+
+</section>
+
+<div class="container">
+
+<div class="tool-card">
+
+<input
+type="text"
+id="qrText"
+placeholder="Enter Text or URL">
+
+<button onclick="generateQR()">
+Generate QR
+</button>
+
+<button onclick="clearQR()">
+Clear
+</button>
+
+<div
+id="qrcode"
+style="margin-top:20px;">
+</div>
+
+</div>
+
+</div>
+
+<footer>
+
+<h2>EasyEdit</h2>
+
+<p>
+QR Generator Module
+</p>
+
+</footer>
+
+<script>
+
+function generateQR(){
+
+let qrText =
+document.getElementById(
+"qrText"
+).value;
+
+if(qrText === ""){
+
+alert(
+"Please enter text or URL"
+);
+
+return;
+
+}
+
+document.getElementById(
+"qrcode"
+).innerHTML = "";
+
+new QRCode(
+document.getElementById(
+"qrcode"
+),
+{
+text: qrText,
+width: 250,
+height: 250
+}
+);
+
+}
+
+function clearQR(){
+
+document.getElementById(
+"qrText"
+).value = "";
+
+document.getElementById(
+"qrcode"
+).innerHTML = "";
+
+}
+
+</script>
+
+</body>
+</html>
