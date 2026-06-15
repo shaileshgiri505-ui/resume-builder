@@ -1,106 +1,199 @@
-function generateResume(){
+// EasyEdit Script
 
-    const name =
-    document.getElementById("name").value;
+document.addEventListener("DOMContentLoaded", () => {
 
-    const email =
-    document.getElementById("email").value;
+    console.log("EasyEdit Loaded");
 
-    const phone =
-    document.getElementById("phone").value;
+});
 
-    const objective =
-    document.getElementById("objective").value;
+// Mobile Menu
 
-    const education =
-    document.getElementById("education").value;
+function toggleMenu(){
 
-    const skills =
-    document.getElementById("skills").value;
+    const menu =
+    document.querySelector(".nav-links");
 
-    const photo =
-    document.getElementById("photo");
+    menu.classList.toggle("active");
 
-    let imageHTML = "";
+}
 
-    if(photo.files && photo.files[0]){
+// Dark Mode
 
-        const reader = new FileReader();
+function toggleTheme(){
 
-        reader.onload = function(e){
+    document.body.classList.toggle("light-mode");
 
-            imageHTML =
-            `<img src="${e.target.result}"
-            class="profile-image">`;
+    const current =
+    localStorage.getItem("theme");
 
-            document.getElementById("resumePreview").innerHTML = `
+    if(current === "light"){
 
-            ${imageHTML}
-
-            <h2 class="resume-name">${name}</h2>
-
-            <p><strong>Email:</strong> ${email}</p>
-
-            <p><strong>Phone:</strong> ${phone}</p>
-
-            <div class="section">
-                <h3>Professional Summary</h3>
-                <p>${objective}</p>
-            </div>
-
-            <div class="section">
-                <h3>Education</h3>
-                <p>${education}</p>
-            </div>
-
-            <div class="section">
-                <h3>Skills</h3>
-                <p>${skills}</p>
-            </div>
-
-            `;
-        };
-
-        reader.readAsDataURL(photo.files[0]);
+        localStorage.setItem("theme","dark");
 
     }else{
 
-        document.getElementById("resumePreview").innerHTML = `
+        localStorage.setItem("theme","light");
 
-        <h2 class="resume-name">${name}</h2>
-
-        <p><strong>Email:</strong> ${email}</p>
-
-        <p><strong>Phone:</strong> ${phone}</p>
-
-        <div class="section">
-            <h3>Professional Summary</h3>
-            <p>${objective}</p>
-        </div>
-
-        <div class="section">
-            <h3>Education</h3>
-            <p>${education}</p>
-        </div>
-
-        <div class="section">
-            <h3>Skills</h3>
-            <p>${skills}</p>
-        </div>
-
-        `;
     }
+
 }
 
-function resetForm(){
+// Load Theme
 
-    document.getElementById("name").value="";
-    document.getElementById("email").value="";
-    document.getElementById("phone").value="";
-    document.getElementById("objective").value="";
-    document.getElementById("education").value="";
-    document.getElementById("skills").value="";
-    document.getElementById("photo").value="";
+window.onload = () => {
 
-    document.getElementById("resumePreview").innerHTML="";
+    const theme =
+    localStorage.getItem("theme");
+
+    if(theme === "light"){
+
+        document.body.classList.add("light-mode");
+
+    }
+
+};
+
+// Smooth Scroll
+
+document
+.querySelectorAll('a[href^="#"]')
+.forEach(anchor => {
+
+    anchor.addEventListener("click", function(e){
+
+        e.preventDefault();
+
+        document
+        .querySelector(
+            this.getAttribute("href")
+        )
+        ?.scrollIntoView({
+            behavior:"smooth"
+        });
+
+    });
+
+});
+
+// Tool Search
+
+function searchTools(){
+
+    let input =
+    document.getElementById("toolSearch")
+    .value
+    .toLowerCase();
+
+    let cards =
+    document.querySelectorAll(".tool-card");
+
+    cards.forEach(card => {
+
+        let text =
+        card.innerText.toLowerCase();
+
+        if(text.includes(input)){
+
+            card.style.display = "block";
+
+        }else{
+
+            card.style.display = "none";
+
+        }
+
+    });
+
 }
+
+// Notification
+
+function showNotification(message){
+
+    let note =
+    document.createElement("div");
+
+    note.className =
+    "notification";
+
+    note.innerText =
+    message;
+
+    document.body.appendChild(note);
+
+    setTimeout(() => {
+
+        note.remove();
+
+    },3000);
+
+}
+
+// Tool Open Demo
+
+function openTool(toolName){
+
+    showNotification(
+        toolName + " Coming Soon"
+    );
+
+}
+
+// Button Effects
+
+document
+.querySelectorAll("button")
+.forEach(btn => {
+
+    btn.addEventListener("click", () => {
+
+        btn.style.transform =
+        "scale(0.95)";
+
+        setTimeout(() => {
+
+            btn.style.transform =
+            "scale(1)";
+
+        },150);
+
+    });
+
+});
+
+// Counter Animation
+
+function animateCounters(){
+
+    const counters =
+    document.querySelectorAll(".stat-box h3");
+
+    counters.forEach(counter => {
+
+        let count = 0;
+
+        const target =
+        parseInt(counter.innerText);
+
+        const update = () => {
+
+            if(count < target){
+
+                count++;
+
+                counter.innerText =
+                count + "+";
+
+                requestAnimationFrame(update);
+
+            }
+
+        };
+
+        update();
+
+    });
+
+}
+
+animateCounters();
