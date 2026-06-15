@@ -1,58 +1,218 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume Builder</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>EasyEdit - All In One Document Tools</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 </head>
+
 <body>
 
-<div class="container">
+<nav class="navbar">
 
-    <h1>Resume Builder</h1>
+<div class="logo">
+<i class="fas fa-file-alt"></i>
+EasyEdit
+</div>
 
-    <div class="form-box">
+<ul class="nav-links">
+<li><a href="#">Home</a></li>
+<li><a href="#">Resume Builder</a></li>
+<li><a href="#">PDF Tools</a></li>
+<li><a href="#">Image Tools</a></li>
+<li><a href="#">QR Tools</a></li>
+<li><a href="#">Contact</a></li>
+</ul>
 
-        <label>Profile Photo</label>
-        <input type="file" id="photo" accept="image/*">
+</nav>
 
-        <label>Full Name</label>
-        <input type="text" id="name" placeholder="Enter Full Name">
+<section class="hero">
 
-        <label>Email Address</label>
-        <input type="email" id="email" placeholder="Enter Email">
+<div class="hero-content">
 
-        <label>Phone Number</label>
-        <input type="text" id="phone" placeholder="Enter Phone Number">
+<h1>
+All-In-One Document Tools Platform
+</h1>
 
-        <label>Professional Summary</label>
-        <textarea id="objective" rows="4" placeholder="Write about yourself"></textarea>
+<p>
+Create professional resumes, edit PDFs,
+compress images, generate QR codes and
+manage documents from one modern dashboard.
+</p>
 
-        <label>Education</label>
-        <textarea id="education" rows="4" placeholder="Enter Education Details"></textarea>
+<div class="hero-buttons">
 
-        <label>Skills</label>
-        <textarea id="skills" rows="4" placeholder="Enter Skills"></textarea>
+<button class="primary-btn">
+Get Started
+</button>
 
-        <div class="btn-group">
-            <button onclick="generateResume()">
-                Generate Resume
-            </button>
-
-            <button type="button" class="clear-btn" onclick="resetForm()">
-                Reset Form
-            </button>
-        </div>
-
-    </div>
-
-    <div id="resumePreview"></div>
+<button class="secondary-btn">
+Explore Tools
+</button>
 
 </div>
+
+</div>
+
+</section>
+
+<section class="tools-section">
+
+<h2>Popular Tools</h2>
+
+<div class="tools-grid">
+
+<div class="tool-card">
+
+<i class="fas fa-user-tie"></i>
+
+<h3>Resume Builder</h3>
+
+<p>
+Build ATS Friendly Professional Resumes
+</p>
+
+</div>
+
+<div class="tool-card">
+
+<i class="fas fa-file-pdf"></i>
+
+<h3>PDF Tools</h3>
+
+<p>
+Merge, Split & Compress PDF Files
+</p>
+
+</div>
+
+<div class="tool-card">
+
+<i class="fas fa-image"></i>
+
+<h3>Image Tools</h3>
+
+<p>
+Compress, Resize & Convert Images
+</p>
+
+</div>
+
+<div class="tool-card">
+
+<i class="fas fa-qrcode"></i>
+
+<h3>QR Generator</h3>
+
+<p>
+Generate Custom QR Codes
+</p>
+
+</div>
+
+<div class="tool-card">
+
+<i class="fas fa-file-invoice"></i>
+
+<h3>Invoice Maker</h3>
+
+<p>
+Generate Professional Invoices
+</p>
+
+</div>
+
+<div class="tool-card">
+
+<i class="fas fa-calculator"></i>
+
+<h3>Calculators</h3>
+
+<p>
+GST, EMI & Age Calculators
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="features">
+
+<h2>Why Choose EasyEdit?</h2>
+
+<div class="feature-grid">
+
+<div class="feature-card">
+⚡ Fast Processing
+</div>
+
+<div class="feature-card">
+🔒 Secure & Private
+</div>
+
+<div class="feature-card">
+📱 Mobile Friendly
+</div>
+
+<div class="feature-card">
+🎨 Modern UI
+</div>
+
+<div class="feature-card">
+📄 PDF Export
+</div>
+
+<div class="feature-card">
+🌙 Dark Mode
+</div>
+
+</div>
+
+</section>
+
+<section class="stats">
+
+<div class="stat-box">
+<h3>10+</h3>
+<p>Tools</p>
+</div>
+
+<div class="stat-box">
+<h3>100%</h3>
+<p>Free</p>
+</div>
+
+<div class="stat-box">
+<h3>24/7</h3>
+<p>Available</p>
+</div>
+
+</section>
+
+<footer>
+
+<h2>EasyEdit</h2>
+
+<p>
+Your Complete Document Productivity Platform
+</p>
+
+<p>
+© 2026 EasyEdit. All Rights Reserved.
+</p>
+
+</footer>
 
 <script src="script.js"></script>
 
 </body>
 </html>
-
