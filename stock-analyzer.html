@@ -1,14 +1,577 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Stock Analyzer</title>
-</head>
-<body>
-  <h1>Stock Analyzer</h1>
-  <p>Website is working successfully.</p>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>EasyEdit Stock Analyzer</title>
 
-  <script src="stock.js"></script>
+<link rel="stylesheet" href="stock.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="hero">
+
+<h1>📈 EasyEdit Stock Analyzer</h1>
+
+<p>Search Any NSE / BSE Company</p>
+
+<div class="search">
+
+<input
+type="text"
+id="stockInput"
+placeholder="Enter Stock Name / Symbol">
+
+<button id="searchBtn">
+
+Search
+
+</button>
+
+</div>
+
+</div>
+
+<div class="loading" id="loading">
+
+Loading...
+
+</div>
+
+
+<section class="card">
+
+<h2>Company Overview</h2>
+
+<div class="grid">
+
+<div class="item">
+
+<label>Company</label>
+
+<h3 id="companyName">-</h3>
+
+</div>
+
+<div class="item">
+
+<label>Current Price</label>
+
+<h3 id="price">-</h3>
+
+</div>
+
+<div class="item">
+
+<label>Today's Change</label>
+
+<h3 id="change">-</h3>
+
+</div>
+
+<div class="item">
+
+<label>Market Cap</label>
+
+<h3 id="marketCap">-</h3>
+
+</div>
+
+<div class="item">
+
+<label>Enterprise Value</label>
+
+<h3 id="ev">-</h3>
+
+</div>
+
+<div class="item">
+
+<label>Sector</label>
+
+<h3 id="sector">-</h3>
+
+</div>
+
+<div class="item">
+
+<label>Industry</label>
+
+<h3 id="industry">-</h3>
+
+</div>
+
+<div class="item">
+
+<label>Book Value</label>
+
+<h3 id="bookValue">-</h3>
+
+</div>
+
+<div class="item">
+
+<label>Face Value</label>
+
+<h3 id="faceValue">-</h3>
+
+</div>
+
+<div class="item">
+
+<label>Intrinsic Value</label>
+
+<h3 id="intrinsicValue">-</h3>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="card">
+
+<h2>Growth Analysis</h2>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Metric</th>
+
+<th>1Y</th>
+
+<th>3Y</th>
+
+<th>5Y</th>
+
+<th>10Y</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>Revenue</td>
+
+<td id="rev1"></td>
+
+<td id="rev3"></td>
+
+<td id="rev5"></td>
+
+<td id="rev10"></td>
+
+</tr>
+
+<tr>
+
+<td>Profit</td>
+
+<td id="profit1"></td>
+
+<td id="profit3"></td>
+
+<td id="profit5"></td>
+
+<td id="profit10"></td>
+
+</tr>
+
+<tr>
+
+<td>EBITDA</td>
+
+<td id="eb1"></td>
+
+<td id="eb3"></td>
+
+<td id="eb5"></td>
+
+<td id="eb10"></td>
+
+</tr>
+
+<tr>
+
+<td>EPS</td>
+
+<td id="eps1"></td>
+
+<td id="eps3"></td>
+
+<td id="eps5"></td>
+
+<td id="eps10"></td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</section>
+
+
+<section class="card">
+
+<h2>Financial Health</h2>
+
+<div class="grid">
+
+<div class="item">
+
+<label>Revenue</label>
+
+<h3 id="revenue"></h3>
+
+</div>
+
+<div class="item">
+
+<label>Net Profit</label>
+
+<h3 id="netProfit"></h3>
+
+</div>
+
+<div class="item">
+
+<label>EBITDA</label>
+
+<h3 id="ebitda"></h3>
+
+</div>
+
+<div class="item">
+
+<label>Operating Margin</label>
+
+<h3 id="opMargin"></h3>
+
+</div>
+
+<div class="item">
+
+<label>Net Margin</label>
+
+<h3 id="netMargin"></h3>
+
+</div>
+
+<div class="item">
+
+<label>ROE</label>
+
+<h3 id="roe"></h3>
+
+</div>
+
+<div class="item">
+
+<label>ROCE</label>
+
+<h3 id="roce"></h3>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="card">
+
+<h2>Debt Analysis</h2>
+
+<div class="grid">
+
+<div class="item">
+
+<label>Total Debt</label>
+
+<h3 id="debt"></h3>
+
+</div>
+
+<div class="item">
+
+<label>Debt/Equity</label>
+
+<h3 id="deRatio"></h3>
+
+</div>
+
+<div class="item">
+
+<label>Interest Coverage</label>
+
+<h3 id="interestCoverage"></h3>
+
+</div>
+
+<div class="item">
+
+<label>Current Ratio</label>
+
+<h3 id="currentRatio"></h3>
+
+</div>
+
+<div class="item">
+
+<label>Quick Ratio</label>
+
+<h3 id="quickRatio"></h3>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="card">
+
+<h2>Cash Flow</h2>
+
+<div class="grid">
+
+<div class="item">
+
+<label>Operating Cash Flow</label>
+
+<h3 id="ocf"></h3>
+
+</div>
+
+<div class="item">
+
+<label>Free Cash Flow</label>
+
+<h3 id="fcf"></h3>
+
+</div>
+
+<div class="item">
+
+<label>Investing Cash Flow</label>
+
+<h3 id="icf"></h3>
+
+</div>
+
+<div class="item">
+
+<label>Financing Cash Flow</label>
+
+<h3 id="finance"></h3>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="card">
+
+<h2>Shareholding</h2>
+
+<div class="grid">
+
+<div class="item">
+
+<label>Promoter</label>
+
+<h3 id="promoter"></h3>
+
+</div>
+
+<div class="item">
+
+<label>FII</label>
+
+<h3 id="fii"></h3>
+
+</div>
+
+<div class="item">
+
+<label>DII</label>
+
+<h3 id="dii"></h3>
+
+</div>
+
+<div class="item">
+
+<label>Retail</label>
+
+<h3 id="retail"></h3>
+
+</div>
+
+<div class="item">
+
+<label>Pledged Shares</label>
+
+<h3 id="pledged"></h3>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="card">
+
+<h2>Dividend</h2>
+
+<table id="dividendTable"></table>
+
+</section>
+
+
+<section class="card">
+
+<h2>Future Projects</h2>
+
+<p id="projects"></p>
+
+</section>
+
+
+<section class="card">
+
+<h2>Order Book</h2>
+
+<h3 id="orderBook"></h3>
+
+</section>
+
+
+<section class="card">
+
+<h2>Valuation</h2>
+
+<div class="grid">
+
+<div class="item">
+
+<label>P/E</label>
+
+<h3 id="pe"></h3>
+
+</div>
+
+<div class="item">
+
+<label>Industry P/E</label>
+
+<h3 id="industryPE"></h3>
+
+</div>
+
+<div class="item">
+
+<label>EV/EBITDA</label>
+
+<h3 id="evebitda"></h3>
+
+</div>
+
+<div class="item">
+
+<label>PEG Ratio</label>
+
+<h3 id="peg"></h3>
+
+</div>
+
+<div class="item">
+
+<label>Price/Book</label>
+
+<h3 id="pb"></h3>
+
+</div>
+
+<div class="item">
+
+<label>Price/Sales</label>
+
+<h3 id="ps"></h3>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="card">
+
+<h2>Charts</h2>
+
+<canvas id="priceChart"></canvas>
+
+<canvas id="revenueChart"></canvas>
+
+<canvas id="profitChart"></canvas>
+
+<canvas id="cashChart"></canvas>
+
+</section>
+
+
+<section class="card">
+
+<h2>AI Analysis</h2>
+
+<div id="analysis">
+
+Waiting...
+
+</div>
+
+</section>
+
+
+<section class="card score">
+
+<h2>Stock Score</h2>
+
+<h1 id="score">
+
+0 / 100
+
+</h1>
+
+<h2 id="rating">
+
+WAITING
+
+</h2>
+
+</section>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="stock.js"></script>
+
 </body>
 </html>
