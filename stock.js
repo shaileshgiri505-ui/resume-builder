@@ -4,7 +4,7 @@
 // This is the application logic only.
 
 const API_URL = "https://your-api-url.com/search?symbol=";
-
+const API_URL = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=RELIANCE.BSE&apikey=W7E6Z5IQPF94SIMS";
 const $ = id => document.getElementById(id);
 
 const ids = [
